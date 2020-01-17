@@ -1,0 +1,28 @@
+{
+  "name": "mahasiswa-api",
+  "version": "1.0.0",
+  "description": "API Mahasiswa di seluruh Perguruan Tinggi Indonesia dengan Web Scrapper",
+  "main": "server.js",
+  "repository": "https://github.com/sutanlab/mahasiswa-api.git",
+  "author": "Sutan Nasution. <sutan.gnst@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.9.16",
+    "axios": "^0.19.1",
+    "chrome-aws-lambda": "^2.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql-tools": "^4.0.6",
+    "lodash": "^4.17.15",
+    "puppeteer": "^2.0.0",
+    "puppeteer-core": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
