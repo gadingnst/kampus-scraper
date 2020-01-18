@@ -1,0 +1,27 @@
+{
+  "name": "kampus-api",
+  "version": "1.0.0",
+  "description": "API untuk data seluruh Perguruan Tinggi di Indonesia dengan Web Scraping dan Serverless",
+  "main": "server.js",
+  "repository": "https://github.com/sutanlab/kampus-api.git",
+  "author": "Sutan Nasution. <sutan.gnst@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "yarn",
+    "start": "node server.js",
+    "start:dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.9.16",
+    "axios": "^0.19.1",
+    "chrome-aws-lambda": "^2.0.2",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "puppeteer": "^2.0.0",
+    "puppeteer-core": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "name": "kampus-api",
+    "builds": [{
+        "src": "server.js",
+        "use": "@now/node-server"
+    }],
+    "routes": [{
+        "src": "/.*",
+        "dest": "server.js"
+    }]
+}
