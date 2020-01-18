@@ -100,7 +100,7 @@ const resolvers = {
                             return detail
                         })
 
-                        // browser.close()
+                        browser.close()
                         return result
                     })
                     .catch(reason => {
