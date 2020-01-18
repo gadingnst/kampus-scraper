@@ -9,7 +9,7 @@ const typeDef = gql`
     }
     
     extend type Query {
-        getProdiByKampusID(kampusID: ID): [Prodi]
+        getProdiByKampusID(kampusID: ID!): [Prodi]
     }
 `
 

@@ -10,7 +10,7 @@ const typeDef = gql`
     }
 
     extend type Query {
-        getKampusByKeyword(keyword: String): [Kampus]
+        getKampusByKeyword(keyword: String!): [Kampus]
     }
 `
 
