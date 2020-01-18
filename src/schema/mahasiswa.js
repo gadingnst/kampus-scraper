@@ -94,13 +94,13 @@ const resolvers = {
                                     no: data.children[0].textContent.trim(),
                                     semester: data.children[1].textContent.trim(),
                                     status: data.children[2].textContent.trim(),
-                                    jumlah: data.children[3].textContent.trim()
+                                    jumlah: data.children[3].textContent.trim() || 0
                                 }))
                             
                             return detail
                         })
 
-                        browser.close()
+                        // browser.close()
                         return result
                     })
                     .catch(reason => {
