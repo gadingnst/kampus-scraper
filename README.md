@@ -18,7 +18,7 @@ Ini adalah Web API dengan teknologi GraphQL dan Serverless untuk data kampus yan
 ## Disclaimer
 Semua data yang ditampilkan adalah berasal dari pelaporan data Perguruan Tinggi (Kementerian Riset, Teknologi Dan Pendidikan Tinggi) Tidak menambah, mengubah dan menghapus data tanpa ada permintaan dari Perguruan Tinggi.
 
-## [Live Demo](https://kampus-api.sutanlab.now.sh/graphql)
+## [Live Demo](https://kampus-api.sutanlab.id/graphql)
 
 ## TODO Task
 - [x] GET List Kampus berdasarkan keyword
