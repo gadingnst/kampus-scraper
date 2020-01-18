@@ -18,6 +18,7 @@ try {
             return acc
         }, [])
 } catch (err) {
+    // handle error pada serverless zeit
     schemas = ['kampus', 'prodi', 'mahasiswa']
         .map(schema => require(`./${schema}`))
 }

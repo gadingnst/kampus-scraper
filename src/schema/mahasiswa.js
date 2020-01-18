@@ -107,7 +107,7 @@ const resolvers = {
                         console.log(reason)
                         return []
                     })
-                ),
+                )
     }
 }
 
