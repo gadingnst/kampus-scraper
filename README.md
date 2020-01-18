@@ -23,21 +23,21 @@ Semua data yang ditampilkan adalah berasal dari pelaporan data Perguruan Tinggi 
 ## TODO Task
 - [x] GET List Kampus berdasarkan keyword
 - [x] GET List Prodi berdasarkan ID Kampus
-- [x] GET Data Mahasiswa berdasarkan kampus, prodi dan nim
-- [ ] GET Data Dosen berdasarkan kampus, prodi dan nip/nidn
+- [x] GET Data Mahasiswa berdasarkan kampus, prodi dan keyword (nama/nim) 
+- [ ] GET Data Dosen berdasarkan kampus, prodi dan keyword (nama/nip/nidn)
 - [ ] GET List Mahasiswa berdasarkan kampus, prodi dan keyword (nama/nim)
 - [ ] GET List Dosen berdasarkan kampus, prodi dan keyword (nama/nip/nidn)
 - [ ] And maybe more data for next development
 
 ## Contoh Cara Mengkueri
 ### GET List Kampus
-[![List Kampus](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getKampusByKeyword.png)](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getKampusByKeyword.png)
+[![List Kampus](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getListKampus.png)](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getListKampus.png)
 
 ### GET List Prodi
-[![List Prodi](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getProdiByKampusID.png)](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getProdiByKampusID.png)
+[![List Prodi](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getListProdi.png)](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getListProdi.png)
 
 ### GET Detail Mahasiswa
-[![Detail Mahasiswa](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getMahasiswaByNim.png)](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getMahasiswaByNim.png)
+[![Detail Mahasiswa](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getMahasiswa.png)](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getMahasiswa.png)
 
 ---
 

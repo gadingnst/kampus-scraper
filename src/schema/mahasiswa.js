@@ -24,23 +24,23 @@ const typeDef = gql`
     }
     
     extend type Query {
-        getMahasiswaByNIM(kampusID: ID!, prodiID: ID!, nim: ID!): Mahasiswa
-        getMahasiswaByKeyword(kampusID: ID!, prodiID: ID!, keyword: String!): [Mahasiswa]
+        getMahasiswa(kampusID: ID!, prodiID: ID!, keyword: String!): Mahasiswa
+        getListMahasiswa(kampusID: ID!, prodiID: ID!, keyword: String!): [Mahasiswa]
     }
 `
 
 const resolvers = {
     Query: {
         // todo
-        getMahasiswaByKeyword: (_, args) => [],
+        getListMahasiswa: (_, args) => [],
 
-        getMahasiswaByNIM: (_, args) =>
+        getMahasiswa: (_, args) =>
             puppeteer()
                 .then(browser => browser
                     .newPage()
                     .then(async page => {
                         await page.goto(encodeURI(`${API_BASEURL}/mahasiswa`))
-                        await page.evaluate(({ kampusID, prodiID, nim }) => {
+                        await page.evaluate(({ kampusID, prodiID, keyword }) => {
                             const inputKampus = document.getElementById('id_sp')
                             const inputProdi = document.createElement('select')
                             const inputKeyword = document.getElementById('keyword')
@@ -49,7 +49,7 @@ const resolvers = {
                             const captcha2 = document.getElementsByName('captcha_value_2')[0].value
                             
                             inputKampus.setAttribute('value', kampusID)
-                            inputKeyword.setAttribute('value', nim)
+                            inputKeyword.setAttribute('value', keyword)
                             secureCode.setAttribute('value', parseInt(captcha1) + parseInt(captcha2))
                             inputProdi.setAttribute('id', 'id_sms')
                             inputProdi.setAttribute('name', 'id_sms')

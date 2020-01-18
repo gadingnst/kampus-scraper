@@ -10,13 +10,13 @@ const typeDef = gql`
     }
 
     extend type Query {
-        getKampusByKeyword(keyword: String!): [Kampus]
+        getListKampus(keyword: String!): [Kampus]
     }
 `
 
 const resolvers = {
     Query: {
-        getKampusByKeyword: (_, { keyword }) =>
+        getListKampus: (_, { keyword }) =>
             get(encodeURI(`${API_BASEURL}/ajax/listPT/${keyword}`))
                 .then(({ data: { items: data = [] } }) => data.map(kampus => ({
                     id: kampus.value,

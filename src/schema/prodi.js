@@ -9,13 +9,13 @@ const typeDef = gql`
     }
     
     extend type Query {
-        getProdiByKampusID(kampusID: ID!): [Prodi]
+        getListProdi(kampusID: ID!): [Prodi]
     }
 `
 
 const resolvers = {
     Query: {
-        getProdiByKampusID: (_, { kampusID }) =>
+        getListProdi: (_, { kampusID }) =>
             puppeteer()
                 .then(browser => browser
                     .newPage()
