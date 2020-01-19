@@ -15,27 +15,28 @@ const typeDef = gql`
 
 const resolvers = {
     Query: {
-        getListProdi: (_, { kampusID }) =>
-            puppeteer()
-                .then(browser => browser
-                    .newPage()
-                    .then(async page => {
-                        await page.goto(encodeURI(`${API_BASEURL}/prodi/ajaxGetProdyByPT/${kampusID}`))
-                        const result = await page.evaluate(() => [
-                            ...document.getElementById('id_sms').children
-                        ].reduce((acc, cur) => {
-                            const id = cur.getAttribute('value')
-                            !id || acc.push({ id, nama: cur.textContent })
-                            return acc
-                        }, []))
-                        browser.close()
-                        return result
-                    })
-                    .catch(reason => {
-                        console.log(reason)
-                        return []
-                    })
-                )
+        getListProdi: async (_, { kampusID }) => {
+            const browser = await puppeteer()
+            try {
+                const page = await browser.newPage()
+                await page.goto(encodeURI(`${API_BASEURL}/prodi/ajaxGetProdyByPT/${kampusID}`))
+                
+                const result = await page.evaluate(() => [
+                    ...document.getElementById('id_sms').children
+                ].reduce((acc, cur) => {
+                    const id = cur.getAttribute('value')
+                    !id || acc.push({ id, nama: cur.textContent })
+                    return acc
+                }, []))
+
+                return result
+            } catch (reason) {
+                console.log(reason)
+                return []
+            } finally {
+                browser.close()
+            }
+        }
     }
 }
 

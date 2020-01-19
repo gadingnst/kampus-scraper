@@ -1,6 +1,6 @@
 const http = require('http')
 const express = require('express')
-const { ApolloServer } = require('apollo-server-express')
+const { ApolloServer, ApolloError } = require('apollo-server-express')
 const schema = require('./src/schema')
 
 const port = process.env.PORT || 3300
@@ -21,4 +21,12 @@ app.get('*', (req, res) => {
 
 server.listen(port, () => {
     console.log(`> GraphQL ready on http://localhost:${port}/graphql`)
+})
+
+server.on('error', err => {
+    console.log(err)
+    if (err.code === 'ETIMEDOUT')
+        throw new ApolloError('Connection Timeout. Please Try again.', 408)
+    else
+        throw new ApolloError('Internal Server Error. Please comeback later.', 500)
 })

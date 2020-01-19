@@ -24,7 +24,7 @@ const resolvers = {
                     nama: kampus.label.split(/\s\s\s/)[1]
                 })))
                 .catch(reason => {
-                    console.log(reason.response)
+                    console.log(reason)
                     return []
                 })
     }
