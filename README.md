@@ -16,7 +16,7 @@
 Ini adalah Web API dengan teknologi GraphQL dan Serverless untuk data kampus yang ada diseluruh Indonesia. Dibuat dengan menggunakan `puppeteer` untuk scraping data dari website [Kementrian RISTEKDIKTI](https://forlap.ristekdikti.go.id/).
 
 ## Disclaimer
-Semua data yang ditampilkan adalah berasal dari pelaporan data Perguruan Tinggi (Kementerian Riset, Teknologi Dan Pendidikan Tinggi) Tidak menambah, mengubah dan menghapus data tanpa ada permintaan dari Perguruan Tinggi.
+Semua hasil data yang ditampilkan berasal dari scrape website KEMENRISTEKDIKTI (Kementerian Riset, Teknologi Dan Pendidikan Tinggi). Kami tidak menambah, mengubah ataupun menghapus data tanpa ada izin dari KEMENRISTEKDIKTI.
 
 ## [Live Demo](https://kampus-api.sutanlab.id/graphql)
 
