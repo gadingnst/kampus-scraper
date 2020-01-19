@@ -13,6 +13,14 @@ const Apollo = new ApolloServer({
     schema,
 })
 
+const serverOnError = err => {
+    console.log(err)
+    if (err.code.toLowerCase().includes('time'))
+        throw new ApolloError('Connection Timeout. Please Try again.', 408)
+    else
+        throw new ApolloError('Internal Server Error. Please comeback later.', 500)
+}
+
 Apollo.applyMiddleware({ app, path: '/graphql' })
 
 app.get('*', (req, res) => {
@@ -23,10 +31,8 @@ server.listen(port, () => {
     console.log(`> GraphQL ready on http://localhost:${port}/graphql`)
 })
 
-server.on('error', err => {
-    console.log(err)
-    if (err.code === 'ETIMEDOUT')
-        throw new ApolloError('Connection Timeout. Please Try again.', 408)
-    else
-        throw new ApolloError('Internal Server Error. Please comeback later.', 500)
-})
+server.on('error', serverOnError)
+
+module.exports = (req, res) => {
+    req.on('error', serverOnError)
+}
