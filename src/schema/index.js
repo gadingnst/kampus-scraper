@@ -1,7 +1,7 @@
 const { readdirSync } = require('fs')
-const { merge } = require('lodash')
 const { makeExecutableSchema } = require('graphql-tools')
 const { gql } = require('apollo-server-express')
+const { deepMerge } = require('../utils/helpers')
 
 let schemas = []
 const RootQuery = gql`
@@ -25,5 +25,5 @@ try {
 
 module.exports = makeExecutableSchema({
     typeDefs: [RootQuery, ...schemas.map(({ typeDef }) => typeDef)],
-    resolvers: merge(...schemas.map(({ resolvers }) => resolvers))
+    resolvers: deepMerge(...schemas.map(({ resolvers }) => resolvers))
 })

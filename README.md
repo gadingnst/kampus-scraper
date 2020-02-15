@@ -25,7 +25,7 @@ Semua hasil data yang ditampilkan berasal dari website KEMENRISTEKDIKTI (Kemente
 - [x] GET List Prodi berdasarkan ID Kampus
 - [x] GET Data Mahasiswa berdasarkan kampus, prodi dan keyword (nama/nim) 
 - [ ] GET Data Dosen berdasarkan kampus, prodi dan keyword (nama/nip/nidn)
-- [ ] GET List Mahasiswa berdasarkan kampus, prodi dan keyword (nama/nim)
+- [x] GET List Mahasiswa berdasarkan kampus, prodi dan keyword (nama/nim)
 - [ ] GET List Dosen berdasarkan kampus, prodi dan keyword (nama/nip/nidn)
 - [ ] And maybe more data for next development
 

@@ -1,7 +1,8 @@
 const chrome = require('chrome-aws-lambda')
 
-module.exports = async () => chrome.puppeteer.launch({
-    args: chrome.args,
-    executablePath: await chrome.executablePath,
-    headless: chrome.headless
-})
+module.exports = () => chrome.executablePath
+    .then(executablePath => chrome.puppeteer.launch({
+        executablePath,
+        args: chrome.args,
+        headless: chrome.headless
+    }))
