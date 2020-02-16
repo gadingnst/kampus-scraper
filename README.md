@@ -1,7 +1,7 @@
-# Kampus API
+# Kampus Scraper
 
 ## Table of contents
-- [Kampus API](#kampus-api)
+- [Kampus Scraper](#kampus-scraper)
   - [Table of contents](#table-of-contents)
   - [Intro](#intro)
   - [Disclaimer](#disclaimer)
