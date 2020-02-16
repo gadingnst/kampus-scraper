@@ -93,15 +93,15 @@ const resolvers = {
             const browser = await puppeteer()
             try {
                 const offset = getOffset(args.page)
-                const apiUrl = encodeURI(`${API_BASEURL}/mahasiswa`)
+                const url = encodeURI(`${API_BASEURL}/mahasiswa`)
                 const page = await browser.newPage()
                 
-                await page.goto(apiUrl)
+                await page.goto(url)
                 await page.evaluate(search, args)
                 await page.waitForNavigation()
 
                 if (offset > 1)
-                    await page.goto(`${apiUrl}/search/${offset}`)
+                    await page.goto(`${url}/search/${offset}`)
                 
                 const urls = await page.evaluate(() =>
                     [...document.querySelectorAll('tr.tmiddle')]
@@ -147,5 +147,7 @@ const resolvers = {
     }
 }
 
+exports.search = search
+exports.scrape = scrape
 exports.typeDef = typeDef
 exports.resolvers = resolvers

@@ -103,3 +103,6 @@ functions/
 
 # TernJS port file
 .tern-port
+
+# secret
+api-secret.json

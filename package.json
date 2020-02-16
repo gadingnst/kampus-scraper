@@ -18,6 +18,7 @@
     "cheerio": "^1.0.0-rc.3",
     "chrome-aws-lambda": "^2.0.2",
     "express": "^4.17.1",
+    "google-spreadsheet": "^3.0.8",
     "puppeteer": "^2.0.0"
   },
   "devDependencies": {
