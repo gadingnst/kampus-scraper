@@ -1,7 +1,7 @@
-# Kampus API
+# Kampus Scraper
 
 ## Table of contents
-- [Kampus API](#kampus-api)
+- [Kampus Scraper](#kampus-scraper)
   - [Table of contents](#table-of-contents)
   - [Intro](#intro)
   - [Disclaimer](#disclaimer)
@@ -18,7 +18,7 @@ Ini adalah Web API dengan teknologi GraphQL untuk menampilkan data kampus yang a
 ## Disclaimer
 Semua hasil data yang ditampilkan berasal dari website KEMENRISTEKDIKTI (Kementerian Riset, Teknologi Dan Pendidikan Tinggi). Kami tidak menambah, mengubah ataupun menghapus data tanpa ada izin dari KEMENRISTEKDIKTI.
 
-## [Live Demo](https://kampus-api.sutanlab.id/graphql)
+## [Live Demo](http://kampus.sutanlab.id/graphql)
 
 ## TODO Task
 - [x] GET List Kampus berdasarkan keyword
