@@ -35,14 +35,15 @@ async function main() {
         
         await page.goto(url)
         await page.evaluate(search, {
-            kampusID: '52FE65F2-627D-425B-99C3-3A0DC740C134',
+            kampusID: , 
             prodiID: '',
             keyword: ''
         })
 
         await page.waitForNavigation()
 
-        for (let i = 4; i < 9; i++) {
+        for (let i = 1; i < 1999; i++) {
+            let dataCountPerPage = 0
             const offset = getOffset(i)
 
             if (offset > 1)
@@ -65,16 +66,19 @@ async function main() {
 
             for (data of result) {
                 dataCount++
+                dataCountPerPage++
                 console.log(`Writing "${data.nim}" into spreadsheet...`)
                 await sheet.addRow(data)
                 console.log('Done!\n')
             }
+            
+            console.log(`Done Writing ${dataCountPerPage} from page ${i} into spreadsheet`)
         }
     } catch (reason) {
         console.error(reason)
     } finally {
         console.log(`Done writing ${dataCount} data into spreadsheet!`)
-        browser.close()
+        // browser.close()
     }
 }
 
