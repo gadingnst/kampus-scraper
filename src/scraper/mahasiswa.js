@@ -5,6 +5,8 @@ const { search, scrape } = require('../schema/mahasiswa')
 const puppeteer = require('../config/puppeteer')
 const creds = require('../../api-secret.json')
 
+const [kampusID, pageStart, pageEnd] = process.argv.slice(2)
+
 const doScrape = url => scrape(url)
     .then(data => ({
         nim: data.nim,
@@ -35,14 +37,14 @@ async function main() {
         
         await page.goto(url)
         await page.evaluate(search, {
-            kampusID: , 
+            kampusID,
             prodiID: '',
             keyword: ''
         })
 
         await page.waitForNavigation()
 
-        for (let i = 1; i < 1999; i++) {
+        for (let i = pageStart; i < pageEnd; i++) {
             let dataCountPerPage = 0
             const offset = getOffset(i)
 
@@ -78,7 +80,7 @@ async function main() {
         console.error(reason)
     } finally {
         console.log(`Done writing ${dataCount} data into spreadsheet!`)
-        // browser.close()
+        browser.close()
     }
 }
 
