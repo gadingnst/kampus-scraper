@@ -18,7 +18,7 @@ const doScrape = url => scrape(url)
         status: data.status || 'Tidak diketahui',
         tanggalLulus: data.kelulusan || 'Tidak diketahui',
         ijazah: data.ijazah || 'Tidak diketahui',
-        jumlahSKS: data.sks.length ? data.sks.reduce((acc, { jumlah }) => acc + jumlah, 0) : 0
+        jumlahSKS: data.sks.length ? data.sks.reduce((acc, { jumlah }) => acc + parseInt(jumlah), 0) : 0
     }))
     .catch(err => {
         console.log(`An error occured doing scrape "${url}":`, err)
