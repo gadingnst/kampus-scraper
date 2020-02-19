@@ -26,17 +26,21 @@ const doScrape = url => scrape(url)
 
 async function main() {
     console.log('Doing scrape data mahasiswa....\n')
+    const startTimer = new Date()
 
     let dataCount = 0
-    const doc = new GoogleSpreadsheet('1Lg4X4ODzFQUb8e1pV0tW2ONfpRoK_pdr_lMmd2nhUHo')
     const url = encodeURI(`${API_BASEURL}/mahasiswa`)
     const browser = await puppeteer()
     const page = await browser.newPage()
     
     try {
+        console.log('> Connecting google spreadsheet..')
+        const doc = new GoogleSpreadsheet('1Lg4X4ODzFQUb8e1pV0tW2ONfpRoK_pdr_lMmd2nhUHo')
         await doc.useServiceAccountAuth(creds)
         await doc.loadInfo()
+        console.log('> Done!\n')
         
+        console.log('> Creating new sheet..')
         const sheet = await doc.addSheet({ headers: [
             'nim',
             'nama',
@@ -49,7 +53,9 @@ async function main() {
             'ijazah',
             'jumlahSKS'
         ] })
+        console.log('> Done!\n')
 
+        console.log('> Evaluating RISTEKDIKTI Website..')
         await page.goto(url)
         await page.evaluate(search, {
             kampusID,
@@ -58,8 +64,10 @@ async function main() {
         })
 
         await page.waitForNavigation()
+        console.log('> Done!\n')
 
         for (let i = start; i <= pageEnd; i++) {
+            console.log('> Fetching data on page:', i)
             const offset = getOffset(i)
 
             if (offset > 1)
@@ -76,22 +84,22 @@ async function main() {
 
             if (hashUrls.length < 1) break
 
-            console.log('Fetching data page:', i)
             const result = (await Promise.allSettled(hashUrls.map(url => doScrape(url)))
                 .then(data => data.filter(res => res.status === 'fulfilled')))
                 .map(data => data.value)
-            console.log('Done!\n')
+            console.log('> Done!\n')
 
-            console.log(`Writing "${result.length}" data into spreadsheet...`)
+            console.log(`> Writing "${result.length}" data into spreadsheet...`)
             await sheet.addRows(result)
-            console.log('Done!\n')
+            console.log('> Done!\n')
 
-            dataCount =+ result.length
+            dataCount += result.length
         }
     } catch (reason) {
         console.error(reason)
     } finally {
         console.log(`Done writing ${dataCount} data into spreadsheet!`)
+        console.log(`Program exited with ${(new Date() - startTimer) / 1000} second`)
         browser.close()
     }
 }
