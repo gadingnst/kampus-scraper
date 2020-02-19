@@ -59,7 +59,7 @@ async function main() {
 
         await page.waitForNavigation()
 
-        for (let i = start; i < pageEnd; i++) {
+        for (let i = start; i <= pageEnd; i++) {
             const offset = getOffset(i)
 
             if (offset > 1)
