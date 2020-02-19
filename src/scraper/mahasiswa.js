@@ -5,18 +5,20 @@ const { search, scrape } = require('../schema/mahasiswa')
 const puppeteer = require('../config/puppeteer')
 const creds = require('../../api-secret.json')
 
-const [kampusID, pageStart, pageEnd] = process.argv.slice(2)
+const [kampusID, pageEnd, start = 1] = process.argv.slice(2)
 
 const doScrape = url => scrape(url)
     .then(data => ({
-        nim: data.nim,
-        nama: data.nama,
-        jenisKelamin: data.gender,
-        kampus: data.kampus,
-        jurusan: data.prodi,
-        angkatan: data.angkatan,
-        status: data.status,
-        ijazah: data.ijazah
+        nim: `"${data.nim}"`,
+        nama: data.nama || 'Tidak diketahui',
+        jenisKelamin: data.gender || 'Tidak diketahui',
+        kampus: data.kampus || 'Tidak diketahui',
+        jurusan: data.prodi || 'Tidak diketahui',
+        angkatan: data.angkatan || 'Tidak diketahui',
+        status: data.status || 'Tidak diketahui',
+        tanggalLulus: data.kelulusan || 'Tidak diketahui',
+        ijazah: data.ijazah || 'Tidak diketahui',
+        jumlahSKS: data.sks.length ? data.sks.reduce((acc, { jumlah }) => acc + jumlah, 0) : 0
     }))
     .catch(err => {
         console.log(`An error occured doing scrape "${url}":`, err)
@@ -24,6 +26,7 @@ const doScrape = url => scrape(url)
 
 async function main() {
     console.log('Doing scrape data mahasiswa....\n')
+
     let dataCount = 0
     const doc = new GoogleSpreadsheet('1Lg4X4ODzFQUb8e1pV0tW2ONfpRoK_pdr_lMmd2nhUHo')
     const url = encodeURI(`${API_BASEURL}/mahasiswa`)
@@ -33,8 +36,20 @@ async function main() {
     try {
         await doc.useServiceAccountAuth(creds)
         await doc.loadInfo()
-        const sheet = doc.sheetsByIndex[0]
         
+        const sheet = await doc.addSheet({ headers: [
+            'nim',
+            'nama',
+            'jenisKelamin',
+            'kampus',
+            'jurusan',
+            'angkatan',
+            'status',
+            'tanggalLulus',
+            'ijazah',
+            'jumlahSKS'
+        ] })
+
         await page.goto(url)
         await page.evaluate(search, {
             kampusID,
@@ -44,7 +59,7 @@ async function main() {
 
         await page.waitForNavigation()
 
-        for (let i = pageStart; i < pageEnd; i++) {
+        for (let i = start; i < pageEnd; i++) {
             const offset = getOffset(i)
 
             if (offset > 1)
@@ -58,6 +73,8 @@ async function main() {
                         .href
                     )
             )
+
+            if (hashUrls.length < 1) break
 
             console.log('Fetching data page:', i)
             const result = (await Promise.allSettled(hashUrls.map(url => doScrape(url)))
@@ -79,8 +96,8 @@ async function main() {
     }
 }
 
-if (kampusID && pageStart && pageEnd) {
+if (kampusID && start && pageEnd) {
     main()
 } else {
-    throw 'You must pass argument kampusID - start - end'
+    throw 'You must pass argument kampusID - end - start'
 }
