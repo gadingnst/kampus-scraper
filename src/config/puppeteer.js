@@ -5,5 +5,4 @@ module.exports = () => chrome.executablePath
         executablePath,
         args: chrome.args,
         headless: true
-        // headless: chrome.headless
     }))
