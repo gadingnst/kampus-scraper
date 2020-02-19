@@ -45,7 +45,6 @@ async function main() {
         await page.waitForNavigation()
 
         for (let i = pageStart; i < pageEnd; i++) {
-            let dataCountPerPage = 0
             const offset = getOffset(i)
 
             if (offset > 1)
@@ -66,15 +65,11 @@ async function main() {
                 .map(data => data.value)
             console.log('Done!\n')
 
-            for (data of result) {
-                dataCount++
-                dataCountPerPage++
-                console.log(`Writing "${data.nim}" into spreadsheet...`)
-                await sheet.addRow(data)
-                console.log('Done!\n')
-            }
-            
-            console.log(`Done Writing ${dataCountPerPage} from page ${i} into spreadsheet`)
+            console.log(`Writing "${result.length}" data into spreadsheet...`)
+            await sheet.addRows(result)
+            console.log('Done!\n')
+
+            dataCount =+ result.length
         }
     } catch (reason) {
         console.error(reason)
@@ -84,4 +79,8 @@ async function main() {
     }
 }
 
-main()
+if (kampusID && pageStart && pageEnd) {
+    main()
+} else {
+    throw 'You must pass argument kampusID - start - end'
+}
