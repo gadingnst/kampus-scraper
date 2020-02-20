@@ -28,7 +28,7 @@ async function main() {
     console.log('Doing scrape data mahasiswa....\n')
     const startTimer = new Date()
 
-    let dataCount = 0
+    let dataCount = 0, flagPage = 0
     const url = encodeURI(`${API_BASEURL}/mahasiswa`)
     const browser = await puppeteer()
     const page = await browser.newPage()
@@ -67,6 +67,7 @@ async function main() {
         console.log('> Done!\n')
 
         for (let i = start; i <= pageEnd; i++) {
+            flagPage = i
             console.log('> Fetching data on page:', i)
             const offset = getOffset(i)
 
@@ -98,8 +99,9 @@ async function main() {
     } catch (reason) {
         console.error(reason)
     } finally {
-        console.log(`Done writing ${dataCount} data into spreadsheet!`)
-        console.log(`Program exited with ${(new Date() - startTimer) / 1000} second`)
+        console.log(`END> Stopped in page: ${flagPage}.`)
+        console.log(`END> Done writing ${dataCount} data into spreadsheet!`)
+        console.log(`END> Program exited with ${(new Date() - startTimer) / 1000} second`)
         browser.close()
     }
 }
