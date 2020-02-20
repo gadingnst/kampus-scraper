@@ -101,7 +101,7 @@ async function main() {
     } finally {
         console.log(`END> Stopped in page: ${flagPage}.`)
         console.log(`END> Done writing ${dataCount} data into spreadsheet!`)
-        console.log(`END> Program exited with ${(new Date() - startTimer) / 1000} second`)
+        console.log(`END> Program exited with ${(new Date() - startTimer) / 1000} sec...`)
         browser.close()
     }
 }
