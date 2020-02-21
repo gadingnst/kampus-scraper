@@ -83,7 +83,10 @@ async function main() {
                     )
             )
 
-            if (hashUrls.length < 1) break
+            if (hashUrls.length < 1) {
+                console.log(`No more data at page: ${i}. Program will stop.`)
+                break
+            }
 
             const result = (await Promise.allSettled(hashUrls.map(url => doScrape(url)))
                 .then(data => data.filter(res => res.status === 'fulfilled')))
