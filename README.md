@@ -39,12 +39,10 @@ Semua hasil data yang ditampilkan berasal dari website KEMENRISTEKDIKTI (Kemente
 ### GET Detail Mahasiswa
 [![Detail Mahasiswa](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getMahasiswa.png)](https://raw.githubusercontent.com/sutanlab/kampus-api/master/capture/getMahasiswa.png)
 
-### Support
-
-#### 1. Global
+## Support Me
+### Global
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B71P7PB)
-
-#### 2. Indonesia
+### Indonesia
 - [Trakteer](https://trakteer.id/sutanlab)
 - [Karyakarsa](https://karyakarsa.com/sutanlab)
 
