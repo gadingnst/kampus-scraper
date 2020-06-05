@@ -3,6 +3,8 @@ const express = require('express')
 const { ApolloServer } = require('apollo-server-express')
 const schema = require('./src/schema')
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const app = express()
 const port = process.env.PORT || 3300
 const server = http.createServer(app)

@@ -4,5 +4,6 @@ module.exports = () => chrome.executablePath
     .then(executablePath => chrome.puppeteer.launch({
         executablePath,
         args: chrome.args,
-        headless: true
+        headless: !process.env.NODE_ENV,
+        ignoreHTTPSErrors: true
     }))

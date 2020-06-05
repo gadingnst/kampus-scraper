@@ -10,7 +10,7 @@
   "scripts": {
     "build": "yarn",
     "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start:dev": "NODE_ENV=development nodemon server.js"
   },
   "dependencies": {
     "apollo-server-express": "^2.9.16",
