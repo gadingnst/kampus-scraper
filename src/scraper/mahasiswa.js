@@ -1,5 +1,5 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet')
-const { getOffset } = require('../utils/helpers')
+const { getOffset, disableTLSRejectUnauthorized } = require('../utils/helpers')
 const { API_BASEURL } = require('../config')
 const { search, scrape } = require('../schema/mahasiswa')
 const puppeteer = require('../config/puppeteer')
@@ -35,7 +35,7 @@ async function main() {
     
     try {
         console.log('> Connecting google spreadsheet..')
-        const doc = new GoogleSpreadsheet('1Lg4X4ODzFQUb8e1pV0tW2ONfpRoK_pdr_lMmd2nhUHo')
+        const doc = new GoogleSpreadsheet(creds.spreadsheet_id)
         await doc.useServiceAccountAuth(creds)
         await doc.loadInfo()
         console.log('> Done!\n')
@@ -56,6 +56,7 @@ async function main() {
         console.log('> Done!\n')
 
         console.log('> Evaluating RISTEKDIKTI Website..')
+        disableTLSRejectUnauthorized()
         await page.goto(url)
         await page.evaluate(search, {
             kampusID,
@@ -112,5 +113,5 @@ async function main() {
 if (kampusID && start && pageEnd) {
     main()
 } else {
-    throw 'You must pass argument kampusID - end - start'
+    throw 'You must pass argument {kampusID} {end} {start}'
 }

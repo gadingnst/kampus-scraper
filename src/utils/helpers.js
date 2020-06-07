@@ -1,5 +1,7 @@
 const isObject = object => object && typeof object === 'object'
 
+const disableTLSRejectUnauthorized = () => process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
+
 const getOffset = (page = 1, multiple = 20) =>
     Number.isNaN(page) ? 1 : ((page < 1 ? 1 : page) - 1) * multiple
 
@@ -18,3 +20,4 @@ const deepMerge = (...object) => object.reduce((acc, cur) => {
 exports.isObject = isObject
 exports.deepMerge = deepMerge
 exports.getOffset = getOffset
+exports.disableTLSRejectUnauthorized = disableTLSRejectUnauthorized

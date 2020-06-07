@@ -1,9 +1,10 @@
 const http = require('http')
 const express = require('express')
 const { ApolloServer } = require('apollo-server-express')
+const { disableTLSRejectUnauthorized } = require('./src/utils/helpers')
 const schema = require('./src/schema')
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+disableTLSRejectUnauthorized()
 
 const app = express()
 const port = process.env.PORT || 3300
