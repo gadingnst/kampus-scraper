@@ -50,7 +50,7 @@ Semua hasil data yang ditampilkan berasal dari website KEMENRISTEKDIKTI (Kemente
   "spreadsheet_id": "xxxxx"
 }
 ```
-1. Ketikkan command `yarn start` atau `npm start` untuk menjalankan server. Ketikkan command `yarn start:dev` atau `npm run start:dev` untuk running dalam mode development, hal ini jika ingin melihat browsernya beraksi secara UI, karena kalau hanya command `start` yang dijalankan adalah browser `headless` tanpa UI.
+7. Terakhir, ketikkan command `yarn start` atau `npm start` untuk menjalankan server. Ketikkan command `yarn start:dev` atau `npm run start:dev` untuk running dalam mode development, hal ini jika ingin melihat browsernya beraksi secara UI, karena kalau hanya command `start` yang dijalankan adalah browser `headless` tanpa UI.
 
 ## Notes
 - Untuk OS ubuntu, jika `puppeteer`-nya tidak jalan atau error, bisa coba install ini terlebih dahulu. `sudo apt install libpangocairo-1.0-0 libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 libxi6 libxtst6 libnss3 libcups2 libxss1 libxrandr2 libgconf2-4 libasound2 libatk1.0-0 libgtk-3-0`
