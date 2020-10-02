@@ -19,7 +19,7 @@ try {
         }, [])
 } catch (err) {
     // handle error pada serverless zeit
-    schemas = ['kampus', 'prodi', 'mahasiswa']
+    schemas = ['kampus', 'prodi', 'mahasiswa', 'dosen']
         .map(schema => require(`./${schema}`))
 }
 
