@@ -37,7 +37,7 @@ Semua hasil data yang ditampilkan berasal dari website KEMENRISTEKDIKTI (Kemente
 ## Instalasi
 1. Fork dan clone repository ini ke komputer kamu.
 2. Jalankankan `yarn install` atau `npm install` untuk menginstall semua depedensi yang dibutuhkan.
-3. Buat credentials untuk gsheet di `GCP Console`. lebih lengkapnya, baca [disini](https://docs.wso2.com/display/IntegrationCloud/Get+Credentials+for+Google+Spreadsheet)
+3. Buat credentials untuk gsheet di `GCP Console`. lebih lengkapnya, baca [disini](https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication)
 4. Copy file `api-secret.example.json` dengan nama `api-secret.json`.
 5. Buat 1 file dokumen google spreadsheet, kemudian kasih akses penuh untuk `client_email` yang didapatkan dari credentials tadi.
 6. Copy credentials yang sudah dibuat tadi kedalam `api-secret.json`, untuk key `spreadsheet_id` bisa ditambahkan sendiri dibawahnya berdasarkan id spreadsheet yang dibawah tadi, contoh pada file `api-secret.json`:
