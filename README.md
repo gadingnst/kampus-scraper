@@ -1,7 +1,8 @@
 # Kampus Scraper
 
 ```
-This scraper is doesn't works anymore. because `forlap.kemdikbud.go.id` already move to `https://pddikti.kemdikbud.go.id/`.
+This scraper is doesn't works anymore.
+because `forlap.kemdikbud.go.id` already moved to `https://pddikti.kemdikbud.go.id/`.
 ```
 
 ## Table of contents
