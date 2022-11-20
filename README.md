@@ -1,5 +1,9 @@
 # Kampus Scraper
 
+```
+This scraper is doesn't works anymore. because `forlap.kemdikbud.go.id` already move to `https://pddikti.kemdikbud.go.id/`.
+```
+
 ## Table of contents
 - [Kampus Scraper](#kampus-scraper)
   - [Table of contents](#table-of-contents)
